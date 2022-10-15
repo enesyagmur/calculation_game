@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+     <script src="https://kit.fontawesome.com/5a44f94317.js" crossorigin="anonymous"></script>
+
+  </head>
+  <body class="justify-content-center">
+
+
+    <div class="container bg-dark text-white p-5 mt-5 justify-content-center rounded">
+
+      <h1 class="h1 border border-white text-center">Hesaplama oyunu</h1>
+
+      <div class="calculate border border-warning p-5">
+       <label for="" id="number1" class="fs-3">Sayı1</label>
+       <label for="" id="islem" class="fs-4">+</label>
+       <label for="" id="number2" class="fs-3">Sayı2</label>
+       <label for="">=</label>
+       <input type="text" name="" id="txt">
+       <input type="button" class="btn bg-primary" value="Kontrol et" onclick="check();">
+
+      </div>
+
+      <div class="result border border-secondary p-2 text-center mt-2"> 
+        <label for="" class=" bg-success p-2 rounded" id="true">Doğru sayısı</label>
+        <label for="" class=" bg-danger p-2 rounded" id="false">Yanlış sayısı</label>
+
+      </div>
+
+
+    </div>
+    
+
+
+
+    <script>
+
+   
+
+
+    function show(id,deger){
+        document.getElementById(id).innerHTML=deger;
+    }
+
+    function check(){
+
+       let say1_text = document.getElementById('number1').innerHTML;
+       let say2_text = document.getElementById('number2').innerHTML;
+       let operator = document.getElementById('islem').innerHTML;
+       let userdata_text = document.getElementById('txt').value;
+       let true_count=0;
+       let false_count=0;
+      
+ 
+        let say1=Number(say1_text);
+        let say2=Number(say2_text);
+        let userdata=Number(userdata_text);
+        let result;
+
+        if(operator=="+"){
+            result=say1+say2;
+        }
+        else if(operator=="-"){
+            result=say1-say2;
+        }
+        else if(operator=="*"){
+            result=say1*say2;
+        }
+        else
+        result=say1/say2;
+
+
+
+        if(userdata==result){
+           true_count++;
+        }
+        else
+        false_count++;
+        
+        
+
+
+        show('true',true_count);
+       show('false',false_count);
+        rnd('number1');
+       rnd('number2');
+       random_operator();
+        
+       
+    }
+
+
+    // random sayı oluşturup istedğin yere yazdırma
+    function rnd(content){
+        let random1 = Math.floor(Math.random()*21);
+        document.getElementById(content).innerHTML=random1;
+       }
+
+      
+
+
+       function random_operator(){
+         let a = Math.floor(Math.random()*4);
+        
+        if(a==0) {
+        document.getElementById('islem').innerHTML="+";}
+
+        else if(a==1) {
+            document.getElementById('islem').innerHTML="-";}
+
+
+        else if(a==2) {
+            document.getElementById('islem').innerHTML="*";}
+
+
+        else {
+            document.getElementById('islem').innerHTML="/";}
+         return a;
+       }
+
+
+      
+
+
+
+       
+       rnd('number1');
+       rnd('number2');
+       random_operator();
+
+</script>
+  </body>
+</html>
