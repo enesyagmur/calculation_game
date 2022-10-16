@@ -46,14 +46,15 @@
         document.getElementById(id).innerHTML=deger;
     }
 
+    let true_count=0;
+       let false_count=0;
     function check(){
 
        let say1_text = document.getElementById('number1').innerHTML;
        let say2_text = document.getElementById('number2').innerHTML;
        let operator = document.getElementById('islem').innerHTML;
        let userdata_text = document.getElementById('txt').value;
-       let true_count=0;
-       let false_count=0;
+      
       
  
         let say1=Number(say1_text);
@@ -77,19 +78,20 @@
 
         if(userdata==result){
            true_count++;
+           show('true',true_count);
         }
-        else
-        false_count++;
-        
+        else if (userdata!=result) {
+        false_count=Number(false_count)+1;
+        show('false',false_count);}
         
 
 
-        show('true',true_count);
-       show('false',false_count);
+      
+      
         rnd('number1');
-       rnd('number2');
+        rnd('number2');
        random_operator();
-        
+       
        
     }
 
@@ -97,7 +99,7 @@
     // random sayı oluşturup istedğin yere yazdırma
     function rnd(content){
         let random1 = Math.floor(Math.random()*21);
-        document.getElementById(content).innerHTML=random1;
+        show(content,random1);
        }
 
       
